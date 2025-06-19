@@ -1,114 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aussie Centrals - Coming Soon</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aussie Centrals - Professional Cleaning Services Perth</title>
+    <meta name="description" content="Professional commercial kitchen cleaning, duct cleaning, and canopy cleaning services in Perth. Aussie Centrals - 5 years of trusted service with 24/7 availability.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E67E22;
+            --accent-color: #27AE60;
+            --background-color: #F8F9FA;
+            --text-color: #212529;
+            --white: #FFFFFF;
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: linear-gradient(135deg, #1A3C34 0%, #0A1F2F 100%);
-      color: white;
-      overflow: hidden;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .logo {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      font-size: 24px;
-      font-weight: 700;
-      font-family: sans-serif;
-      text-transform: uppercase;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
 
-    .logo::before {
-      content: '';
-      margin-right: 8px;
-    }
+        /* Header Styles */
+        .navbar {
+            background-color: var(--white) !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
 
-    .content {
-      text-align: left;
-      position: absolute;
-      top: 50%;
-      left: 50px;
-      transform: translateY(-50%);
-    }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
 
-    .content h2 {
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      opacity: 0.9;
-    }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
 
-    .content h1 {
-      font-size: 96px;
-      font-weight: 700;
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-    }
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
 
-    .content p {
-      font-size: 16px;
-      font-weight: 400;
-      opacity: 0.8;
-      max-width: 900px;
-      margin-bottom: 20px;
-    }
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
 
-    .content .contact {
-      font-size: 16px;
-      font-weight: 400;
-      padding: 15px 25px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      display: inline-block;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        .btn-primary:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-2px);
+        }
 
-    .content .contact:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
 
-    .content .contact a {
-      color: white;
-      text-decoration: underline;
-      transition: color 0.3s;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
 
-    .content .contact a:hover {
-      color: #e0e0e0;
-    }
-  </style>
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .contact-card {
+            background: var(--background-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Quote Form */
+        .quote-form {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 100px 0;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: none;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+            border-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer h5 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <div class="logo">
-    Aussie Centrals
-  </div>
-  <div class="content">
-    <h2>WE'RE ALMOST READY</h2>
-    <h1>Coming Soon</h1>
-    <p>Aussie Centrals is your trusted cleaning service in Australia, specializing in professional kitchen cleaning, duct cleaning, and floor cleaning. Our expert team uses advanced techniques and eco-friendly products to ensure spotless, hygienic spaces for homes and businesses. We are committed to delivering exceptional results with a focus on customer satisfaction.</p>
-    <p class="contact">For any queries or support, please email us at <a href="mailto:services@aussiecentrals.com">services@aussiecentrals.com</a>.</p>
-  </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-broom me-2"></i>AUSSIE CENTRALS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="#quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="fade-in">Professional Cleaning Services in Perth</h1>
+                    <p class="fade-in">Expert commercial kitchen cleaning, duct cleaning, and canopy maintenance. Ensuring compliance with Australian standards for over 5 years.</p>
+                    <div class="fade-in">
+                        <a href="#quote" class="btn btn-primary btn-lg">Get Free Quote</a>
+                        <a href="tel:+61451374786" class="btn btn-outline-light btn-lg">Call Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-tools" style="font-size: 15rem; opacity: 0.1;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Professional Services</h2>
+                <p>Comprehensive cleaning solutions for commercial kitchens and HVAC systems across Perth</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Commercial Kitchen Cleaning</h4>
+                        <p>Complete canopy, range hood, and exhaust system cleaning to prevent fire hazards and ensure food safety compliance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h4>Duct & HVAC Cleaning</h4>
+                        <p>Professional cleaning of air ducts, ventilation systems, and HVAC components to improve air quality and system efficiency.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h4>Filter Exchange Service</h4>
+                        <p>Regular filter cleaning and exchange service with high-quality recycled filters to maintain optimal system performance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Floor Cleaning</h4>
+                        <p>Deep cleaning and maintenance of commercial kitchen floors, ensuring hygiene standards and slip-resistant surfaces.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h4>Compliance Maintenance</h4>
+                        <p>Regular inspections and maintenance programs to ensure compliance with Australian Standards AS 1851 and AS 3666.2.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>24/7 Emergency Service</h4>
+                        <p>Round-the-clock emergency cleaning services to minimize downtime and maintain kitchen operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Expert Team Members</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Service Availability</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Australian Standards Compliant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="contact-info">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Why Choose Aussie Centrals?</h2>
+                <p>Your trusted partner for professional cleaning services in Perth</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h5>Certified & Compliant</h5>
+                        <p>Fully certified and compliant with Australian Standards AS 1851 and AS 3666.2 for commercial kitchen and HVAC cleaning.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5>Experienced Team</h5>
+                        <p>Our team of 10 experienced professionals brings 5+ years of expertise in commercial cleaning and maintenance services.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5>Local Perth Service</h5>
+                        <p>Based in Perth, we provide comprehensive cleaning services across the metropolitan area with quick response times.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-info" style="background-color: var(--background-color);">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get In Touch</h2>
+                <p>Contact us for professional cleaning services and free consultations</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>Phone</h5>
+                        <p><a href="tel:+61451374786">+61 451 374 786</a></p>
+                        <small>24/7 Emergency Service Available</small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>Email</h5>
+                        <p><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></p>
+                        <small>Quick Response Within 2 Hours</small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5>Address</h5>
+                        <p>22/180 Fulham Street<br>Kewdale WA 6105<br>Perth, Australia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section id="quote" class="quote-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title fade-in" style="color: white;">
+                        <h2 style="color: white;">Get Your Free Quote</h2>
+                        <p style="color: rgba(255,255,255,0.9);">Fill out the form below and we'll get back to you within 2 hours with a detailed quote.</p>
+                    </div>
+                    <form class="fade-in" id="quoteForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control" required>
+                                    <option value="">Select Service Type</option>
+                                    <option value="kitchen">Commercial Kitchen Cleaning</option>
+                                    <option value="duct">Duct & HVAC Cleaning</option>
+                                    <option value="filter">Filter Exchange Service</option>
+                                    <option value="floor">Floor Cleaning</option>
+                                    <option value="compliance">Compliance Maintenance</option>
+                                    <option value="emergency">Emergency Service</option>
+                                    <option value="multiple">Multiple Services</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" placeholder="Business Address">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4" placeholder="Additional Details (Kitchen size, equipment type, frequency needed, etc.)"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Get Free Quote</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-broom me-2"></i>AUSSIE CENTRALS</h5>
+                    <p>Professional cleaning services for commercial kitchens, ducts, and HVAC systems across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#services">Kitchen Cleaning</a></li>
+                        <li><a href="#services">Duct Cleaning</a></li>
+                        <li><a href="#services">Filter Exchange</a></li>
+                        <li><a href="#services">Floor Cleaning</a></li>
+                        <li><a href="#services">HVAC Cleaning</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>22/180 Fulham Street, Kewdale WA 6105</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
+                        <li>Saturday: 8:00 AM - 4:00 PM</li>
+                        <li>Sunday: Emergency Only</li>
+                        <li><strong>24/7 Emergency Service Available</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Licensed & Insured | AS 1851 & AS 3666.2 Compliant</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const formValues = Object.fromEntries(formData);
+            
+            // Create email body
+            const emailBody = `
+                New Quote Request from Aussie Centrals Website:
+                
+                Name: ${this.querySelector('input[placeholder="Your Name"]').value}
+                Email: ${this.querySelector('input[placeholder="Email Address"]').value}
+                Phone: ${this.querySelector('input[placeholder="Phone Number"]').value}
+                Service Type: ${this.querySelector('select').value}
+                Business Address: ${this.querySelector('input[placeholder="Business Address"]').value}
+                Additional Details: ${this.querySelector('textarea').value}
+            `;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:services@aussiecentrals.com.au?subject=Quote Request from Website&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            alert('Thank you for your quote request! Your email client will open with the details. We will respond within 2 hours.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
 </body>
 </html>
