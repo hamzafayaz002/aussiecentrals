@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Aussie Centrals | Commercial Kitchen Filters Perth</title>
+    <meta name="description" content="Premium baffle and honeycomb grease filters for commercial kitchens. High-quality filtration products from Aussie Centrals Perth.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E67E22;
+            --accent-color: #27AE60;
+            --background-color: #F8F9FA;
+            --text-color: #212529;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: var(--white) !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 80px 0 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-nav {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Product Categories */
+        .product-categories {
+            padding: 60px 0;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--background-color);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: #6c757d;
+        }
+
+        /* Features List */
+        .features-list {
+            background: var(--background-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-list h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        /* Product Table */
+        .product-table-container {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .table-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem;
+            margin: 0;
+        }
+
+        .table-header h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .product-table {
+            margin: 0;
+            border: none;
+        }
+
+        .product-table th {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 1rem;
+            border: none;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .product-table td {
+            padding: 1rem;
+            border: none;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+        }
+
+        .product-table tbody tr:hover {
+            background-color: rgba(231, 126, 34, 0.05);
+        }
+
+        .size-highlight {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .price-tag {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Installation Guidelines */
+        .installation-guidelines {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .installation-guidelines h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .installation-guidelines .alert {
+            background-color: rgba(231, 126, 34, 0.1);
+            border: 1px solid var(--secondary-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 25px;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer h5 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .product-table {
+                font-size: 0.9rem;
+            }
+            
+            .product-table th,
+            .product-table td {
+                padding: 0.7rem 0.5rem;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-broom me-2"></i>AUSSIE CENTRALS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="index.html#quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Premium Filter Products</h1>
+            <p>High-quality baffle and honeycomb grease filters for commercial kitchen exhaust systems</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-nav">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="product-categories">
+        <div class="container">
+            
+            <!-- Baffle Grease Filters -->
+            <div class="category-card fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h2 class="category-title">Baffle Grease Filters</h2>
+                    </div>
+                </div>
+                
+                <p class="category-description">
+                    Baffle style filters are manufactured from premium stainless steel and function by forcing grease-laden air to quickly and repeatedly change direction as it rises through the filter. This advanced design drastically reduces fire risk by preventing dangerous combustible material buildup on the filter face.
+                </p>
+
+                <div class="features-list">
+                    <h5><i class="fas fa-star me-2"></i>Key Features & Benefits</h5>
+                    <ul>
+                        <li>Superior stainless steel construction for durability</li>
+                        <li>3x higher grease capture efficiency than standard baffle filters</li>
+                        <li>Significantly reduces duct contamination and cleaning frequency</li>
+                        <li>Prevents grease dropback onto cooking surfaces</li>
+                        <li>Extends life of downstream filtration systems</li>
+                        <li>Reduces fire risk through efficient grease separation</li>
+                        <li>Easy maintenance with grease collection tray system</li>
+                    </ul>
+                </div>
+
+                <div class="product-table-container">
+                    <div class="table-header">
+                        <h5><i class="fas fa-table me-2"></i>Baffle Filter Specifications</h5>
+                    </div>
+                    <table class="table product-table">
+                        <thead>
+                            <tr>
+                                <th>Filter Type</th>
+                                <th>Dimensions (L × W × D)</th>
+                                <th>Material</th>
+                                <th>Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="size-highlight">Baffle/Reds</span></td>
+                                <td>494mm × 394mm × 50mm</td>
+                                <td>Stainless Steel</td>
+                                <td>Medium Commercial Kitchens</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Baffle/Threes</span></td>
+                                <td>494mm × 494mm × 50mm</td>
+                                <td>Stainless Steel</td>
+                                <td>Large Commercial Kitchens</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Honeycomb Grease Filters -->
+            <div class="category-card fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div>
+                        <h2 class="category-title">Honeycomb Grease Filters</h2>
+                    </div>
+                </div>
+                
+                <p class="category-description">
+                    The Honeycomb Grease Filter features innovative aluminium construction with a unique honeycomb design that splits incoming air into approximately 32,000 separate airstreams per square meter. This revolutionary design ensures superior grease separation and easy handling for commercial kitchen applications.
+                </p>
+
+                <div class="features-list">
+                    <h5><i class="fas fa-cogs me-2"></i>Technical Advantages</h5>
+                    <ul>
+                        <li>Lightweight aluminium construction for easy handling</li>
+                        <li>32,000 airstreams per m² for maximum grease separation</li>
+                        <li>50mm thick metal honeycomb media</li>
+                        <li>Double compound curve design prevents nesting</li>
+                        <li>Smooth walled honeycomb structure</li>
+                        <li>Wide vertical handles for easy installation</li>
+                        <li>Prevents grease entry into exhaust systems</li>
+                    </ul>
+                </div>
+
+                <div class="product-table-container">
+                    <div class="table-header">
+                        <h5><i class="fas fa-table me-2"></i>Honeycomb Filter Specifications</h5>
+                    </div>
+                    <table class="table product-table">
+                        <thead>
+                            <tr>
+                                <th>Filter Type</th>
+                                <th>Dimensions (L × W × D)</th>
+                                <th>Material</th>
+                                <th>Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="size-highlight">Ones</span></td>
+                                <td>494mm × 254mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Small Commercial Units</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">One/Half</span></td>
+                                <td>494mm × 310mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Compact Kitchen Systems</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Reds</span></td>
+                                <td>494mm × 394mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Standard Commercial Kitchens</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Threes</span></td>
+                                <td>494mm × 494mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Large Kitchen Operations</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Twos</span></td>
+                                <td>624mm × 394mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Extended Width Systems</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Fours</span></td>
+                                <td>624mm × 494mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Large Scale Operations</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Fives</span></td>
+                                <td>754mm × 494mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Industrial Kitchen Systems</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Sevens</span></td>
+                                <td>824mm × 254mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Long Narrow Applications</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Eights</span></td>
+                                <td>594mm × 594mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Square Format Systems</td>
+                            </tr>
+                            <tr>
+                                <td><span class="size-highlight">Nines</span></td>
+                                <td>1130mm × 254mm × 50mm</td>
+                                <td>Aluminium Honeycomb</td>
+                                <td>Extended Length Systems</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Installation Guidelines -->
+            <div class="installation-guidelines fade-in">
+                <h4><i class="fas fa-tools me-2"></i>Installation Guidelines & Care Instructions</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong>Installation Requirements:</strong></h6>
+                        <ul>
+                            <li>Filters must not exceed 30° angle from vertical</li>
+                            <li>Handle sides must be in vertical plane</li>
+                            <li>Ensure proper airflow direction</li>
+                            <li>Secure mounting to prevent movement</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Maintenance & Care:</strong></h6>
+                        <ul>
+                            <li>Regular cleaning schedule recommended</li>
+                            <li>Do not use caustic cleaners</li>
+                            <li>Use approved cleaning solutions only</li>
+                            <li>Inspect for damage during cleaning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="alert mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Important:</strong> Proper installation and regular maintenance are crucial for optimal performance and safety compliance. Contact our professional team for installation assistance and maintenance schedules.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Need Custom Filter Solutions?</h3>
+            <p>Our expert team can help you select the perfect filters for your commercial kitchen requirements</p>
+            <a href="index.html#quote" class="btn btn-outline-light btn-lg">Request Quote</a>
+            <a href="tel:+61451374786" class="btn btn-primary btn-lg">Call Expert</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-broom me-2"></i>AUSSIE CENTRALS</h5>
+                    <p>Professional cleaning services and premium filter products for commercial kitchens across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>22/180 Fulham Street, Kewdale WA 6105</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
+                        <li>Saturday: 8:00 AM - 4:00 PM</li>
+                        <li>Sunday: Emergency Only</li>
+                        <li><strong>24/7 Emergency Service Available</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Licensed & Insured | AS 1851 & AS 3666.2 Compliant</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
