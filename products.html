@@ -35,26 +35,147 @@
             background-color: var(--background-color);
             line-height: 1.6;
             padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        /* Animations disabled state */
+        .animations-disabled * {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Animation Control Button */
+        .animation-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 120px;
+        }
+
+        .animation-toggle:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Floating Action Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: bobbing 2s ease-in-out infinite;
+        }
+
+        .floating-btn.phone {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .floating-btn.quote {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Header Styles */
         .navbar {
-            background-color: var(--white) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(15px);
         }
 
         .navbar-brand {
             font-weight: 700;
             font-size: 1.8rem;
             color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
         }
 
         .navbar-nav .nav-link {
             font-weight: 500;
             color: var(--text-color) !important;
             margin: 0 0.5rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before,
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
         }
 
         .navbar-nav .nav-link:hover,
@@ -69,20 +190,57 @@
             padding: 0.7rem 1.5rem;
             border-radius: 25px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
             background-color: #d35400;
             border-color: #d35400;
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 126, 34, 0.4);
         }
 
         /* Page Header */
         .page-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             color: var(--white);
-            padding: 80px 0 60px 0;
+            padding: 60px 0 40px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="filterPattern" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="rgba(255,255,255,0.1)"/><rect x="10" y="10" width="10" height="10" fill="rgba(255,255,255,0.05)" opacity="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23filterPattern)"/></svg>');
+            opacity: 0.3;
+            animation: filterMove 20s linear infinite;
+        }
+
+        @keyframes filterMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
         }
 
         .page-header h1 {
@@ -114,34 +272,128 @@
         .breadcrumb-item a {
             color: var(--primary-color);
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .breadcrumb-item a:hover {
             color: var(--secondary-color);
         }
 
+        /* Creative Animation Classes */
+        .filter-slide {
+            opacity: 0;
+            transform: translateX(-80px) rotateY(-15deg);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .filter-slide.visible {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
+        }
+
+        .honeycomb-emerge {
+            opacity: 0;
+            transform: scale(0.6) rotate(30deg);
+            transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .honeycomb-emerge.visible {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .baffle-unfold {
+            opacity: 0;
+            transform: rotateX(-90deg) translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .baffle-unfold.visible {
+            opacity: 1;
+            transform: rotateX(0deg) translateY(0);
+        }
+
+        .specs-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: all 0.6s ease;
+        }
+
+        .specs-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        .dimension-pop {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dimension-pop.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .feature-sweep {
+            opacity: 0;
+            transform: translateX(-50px) skew(-10deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .feature-sweep.visible {
+            opacity: 1;
+            transform: translateX(0) skew(0deg);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
         /* Product Categories */
         .product-categories {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .category-card {
             background: var(--white);
             border-radius: 15px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .category-card:hover::before {
+            left: 100%;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .category-header {
             display: flex;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--background-color);
         }
@@ -150,6 +402,12 @@
             font-size: 3rem;
             color: var(--secondary-color);
             margin-right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            transform: rotate(360deg) scale(1.1);
+            color: var(--accent-color);
         }
 
         .category-title {
@@ -162,8 +420,37 @@
         .category-description {
             font-size: 1.1rem;
             line-height: 1.7;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: #6c757d;
+        }
+
+        /* Product Images */
+        .product-image {
+            transition: all 0.4s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-image:hover::before {
+            opacity: 1;
+        }
+
+        .product-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
         /* Features List */
@@ -171,7 +458,25 @@
             background: var(--background-color);
             border-radius: 10px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            transform: scaleY(0);
+            transition: transform 0.6s ease;
+        }
+
+        .features-list.visible::before {
+            transform: scaleY(1);
         }
 
         .features-list h5 {
@@ -190,6 +495,7 @@
             padding: 0.5rem 0;
             padding-left: 2rem;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .features-list li:before {
@@ -200,6 +506,16 @@
             position: absolute;
             left: 0;
             top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .features-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+
+        .features-list li:hover:before {
+            transform: scale(1.2);
         }
 
         /* Product Table */
@@ -209,6 +525,7 @@
             padding: 0;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
         }
 
         .table-header {
@@ -216,6 +533,23 @@
             color: var(--white);
             padding: 1.5rem;
             margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .table-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .table-header:hover::before {
+            left: 100%;
         }
 
         .table-header h5 {
@@ -235,6 +569,7 @@
             padding: 1rem;
             border: none;
             border-bottom: 2px solid var(--primary-color);
+            position: relative;
         }
 
         .product-table td {
@@ -242,55 +577,53 @@
             border: none;
             border-bottom: 1px solid #e9ecef;
             vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+
+        .product-table tbody tr {
+            transition: all 0.3s ease;
         }
 
         .product-table tbody tr:hover {
             background-color: rgba(231, 126, 34, 0.05);
+            transform: scale(1.02);
         }
 
         .size-highlight {
             font-weight: 600;
             color: var(--primary-color);
+            transition: all 0.3s ease;
         }
 
-        .price-tag {
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* Installation Guidelines */
-        .installation-guidelines {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .installation-guidelines h4 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .installation-guidelines .alert {
-            background-color: rgba(231, 126, 34, 0.1);
-            border: 1px solid var(--secondary-color);
-            color: var(--text-color);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
+        .product-table tbody tr:hover .size-highlight {
+            color: var(--secondary-color);
+            transform: scale(1.1);
         }
 
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
             color: var(--white);
-            padding: 80px 0;
+            padding: 60px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ctaDots" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23ctaDots)"/></svg>');
+            animation: ctaDotsMove 25s linear infinite;
+        }
+
+        @keyframes ctaDotsMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-25px, -25px); }
         }
 
         .cta-section h3 {
@@ -313,19 +646,38 @@
             padding: 1rem 2rem;
             margin: 0.5rem;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.5s ease;
+        }
+
+        .btn-outline-light:hover::before {
+            left: 100%;
         }
 
         .btn-outline-light:hover {
             background-color: var(--white);
             color: var(--primary-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
         /* Footer */
         .footer {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 60px 0 30px 0;
+            padding: 40px 0 20px 0;
+            position: relative;
         }
 
         .footer h5 {
@@ -336,15 +688,72 @@
         .footer a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::before {
+            width: 100%;
         }
 
         .footer a:hover {
             color: var(--secondary-color);
         }
 
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: width 0.6s ease;
+        }
+
+        .section-title.in-view h2::after {
+            width: 80px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .page-header {
+                padding: 40px 0 30px 0;
+            }
+            
             .page-header h1 {
                 font-size: 2.5rem;
             }
@@ -367,26 +776,63 @@
             .product-table td {
                 padding: 0.7rem 0.5rem;
             }
-        }
 
-        /* Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
+            .product-categories {
+                padding: 30px 0;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .cta-section {
+                padding: 40px 0;
+            }
+
+            .footer {
+                padding: 30px 0 15px 0;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .animation-toggle {
+                right: 10px;
+                min-width: 100px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Animation Toggle Button -->
+    <button class="animation-toggle" onclick="toggleAnimations()">
+        <i class="fas fa-magic me-1"></i>
+        <span id="toggleText">Disable Animations</span>
+    </button>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+61451374786" class="floating-btn phone" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="index.html#quote" class="floating-btn quote" title="Get Quote">
+            <i class="fas fa-calculator"></i>
+        </a>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">
+            <a class="navbar-brand" href="index.html#home">
                 <img src="pics/logo.png" alt="Aussie Centrals Logo" class="me-2" style="height: 80px; width: auto;">AUSSIE CENTRALS
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -423,8 +869,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Premium Grease Filters</h1>
-            <p>High-performance baffle and honeycomb filters designed to enhance fire safety, reduce kitchen maintenance, and ensure smooth operation of your exhaust systems.</p>
+            <h1 class="filter-slide">Premium Grease Filters</h1>
+            <p class="specs-reveal stagger-1">High-performance baffle and honeycomb filters designed to enhance fire safety, reduce kitchen maintenance, and ensure smooth operation of your exhaust systems.</p>
         </div>
     </section>
 
@@ -445,48 +891,51 @@
         <div class="container">
             
             <!-- Baffle Filters -->
-            <div class="category-card fade-in">
+            <div class="category-card baffle-unfold">
                 <div class="category-header">
-                <div class="text-center mb-4">
-                    <img src="./pics/grease.jpeg" alt="Baffle Grease Filter" class="img-fluid rounded" style="max-height: 300px;">
-                </div>
+                    <div class="text-center mb-4 w-100">
+                        <img src="./pics/grease.jpeg" alt="Baffle Grease Filter" class="img-fluid rounded product-image" style="max-height: 300px;">
+                    </div>
+                    <div class="category-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
                     <div>
                         <h2 class="category-title">Baffle Filters</h2>
                     </div>
                 </div>
                 
-                <p class="category-description">
+                <p class="category-description specs-reveal">
                     Engineered for efficiency and durability, baffle filters work by forcing airflow to rapidly shift direction, effectively trapping grease particles and reducing the risk of fire.
                 </p>
 
-                <div class="features-list">
+                <div class="features-list feature-sweep stagger-1">
                     <h5><i class="fas fa-star me-2"></i>Key Benefits</h5>
                     <ul>
-                        <li>Built for long-lasting use with heavy-duty construction</li>
-                        <li>Captures grease efficiently, reducing cleaning frequency</li>
-                        <li>Prevents grease fallback, enhancing hygiene and fire protection</li>
+                        <li class="dimension-pop stagger-1">Built for long-lasting use with heavy-duty construction</li>
+                        <li class="dimension-pop stagger-2">Captures grease efficiently, reducing cleaning frequency</li>
+                        <li class="dimension-pop stagger-3">Prevents grease fallback, enhancing hygiene and fire protection</li>
                     </ul>
                 </div>
 
-                <div class="product-table-container">
+                <div class="product-table-container honeycomb-emerge stagger-2">
                     <div class="table-header">
                         <h5><i class="fas fa-table me-2"></i>Available Sizes</h5>
                     </div>
                     <table class="table product-table">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Dimensions (L × W × D)</th>
-                                <th>Application</th>
+                                <th class="specs-reveal stagger-1">Code</th>
+                                <th class="specs-reveal stagger-2">Dimensions (L × W × D)</th>
+                                <th class="specs-reveal stagger-3">Application</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="dimension-pop stagger-1">
                                 <td><span class="size-highlight">Standard-1</span></td>
                                 <td>494mm × 394mm × 50mm</td>
                                 <td>Medium Commercial Kitchens</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-2">
                                 <td><span class="size-highlight">Standard-2</span></td>
                                 <td>494mm × 494mm × 50mm</td>
                                 <td>Large Commercial Kitchens</td>
@@ -497,88 +946,91 @@
             </div>
 
             <!-- Honeycomb Filters -->
-            <div class="category-card fade-in">
+            <div class="category-card honeycomb-emerge">
                 <div class="category-header">
-                <div class="text-center mb-4">
-                    <img src="./pics/honey.jpeg" alt="Baffle Grease Filter" class="img-fluid rounded" style="max-height: 300px;">
-                </div>
+                    <div class="text-center mb-4 w-100">
+                        <img src="./pics/honey.jpeg" alt="Honeycomb Grease Filter" class="img-fluid rounded product-image" style="max-height: 300px;">
+                    </div>
+                    <div class="category-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
                     <div>
                         <h2 class="category-title">Honeycomb Filters</h2>
                     </div>
                 </div>
                 
-                <p class="category-description">
+                <p class="category-description specs-reveal">
                     Designed with a precision honeycomb core, these filters break incoming air into thousands of mini streams for maximum grease separation and airflow efficiency.
                 </p>
 
-                <div class="features-list">
+                <div class="features-list feature-sweep stagger-1">
                     <h5><i class="fas fa-cogs me-2"></i>Key Benefits</h5>
                     <ul>
-                        <li>Lightweight and easy to handle, install, and clean</li>
-                        <li>Optimised design increases grease capture and airflow</li>
-                        <li>Perfect for high-use kitchens needing reliable filter performance</li>
+                        <li class="dimension-pop stagger-1">Lightweight and easy to handle, install, and clean</li>
+                        <li class="dimension-pop stagger-2">Optimised design increases grease capture and airflow</li>
+                        <li class="dimension-pop stagger-3">Perfect for high-use kitchens needing reliable filter performance</li>
                     </ul>
                 </div>
 
-                <div class="product-table-container">
+                <div class="product-table-container filter-slide stagger-2">
                     <div class="table-header">
                         <h5><i class="fas fa-table me-2"></i>Available Sizes</h5>
                     </div>
                     <table class="table product-table">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Dimensions (L × W × D)</th>
-                                <th>Application</th>
+                                <th class="specs-reveal stagger-1">Code</th>
+                                <th class="specs-reveal stagger-2">Dimensions (L × W × D)</th>
+                                <th class="specs-reveal stagger-3">Application</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="dimension-pop stagger-1">
                                 <td><span class="size-highlight">Compact-1</span></td>
                                 <td>494mm × 254mm × 50mm</td>
                                 <td>Small Commercial Units</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-2">
                                 <td><span class="size-highlight">Compact-2</span></td>
                                 <td>494mm × 310mm × 50mm</td>
                                 <td>Compact Kitchen Systems</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-3">
                                 <td><span class="size-highlight">Standard-1</span></td>
                                 <td>494mm × 394mm × 50mm</td>
                                 <td>Standard Commercial Kitchens</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-4">
                                 <td><span class="size-highlight">Standard-2</span></td>
                                 <td>494mm × 494mm × 50mm</td>
                                 <td>Large Kitchen Operations</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-5">
                                 <td><span class="size-highlight">Wide-1</span></td>
                                 <td>624mm × 394mm × 50mm</td>
                                 <td>Extended Width Systems</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-1">
                                 <td><span class="size-highlight">Wide-2</span></td>
                                 <td>624mm × 494mm × 50mm</td>
                                 <td>Large Scale Operations</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-2">
                                 <td><span class="size-highlight">Industrial</span></td>
                                 <td>754mm × 494mm × 50mm</td>
                                 <td>Industrial Kitchen Systems</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-3">
                                 <td><span class="size-highlight">Slimline</span></td>
                                 <td>824mm × 254mm × 50mm</td>
                                 <td>Long Narrow Applications</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-4">
                                 <td><span class="size-highlight">Square-Pro</span></td>
                                 <td>594mm × 594mm × 50mm</td>
                                 <td>Square Format Systems</td>
                             </tr>
-                            <tr>
+                            <tr class="dimension-pop stagger-5">
                                 <td><span class="size-highlight">Extended</span></td>
                                 <td>1130mm × 254mm × 50mm</td>
                                 <td>Extended Length Systems</td>
@@ -591,14 +1043,13 @@
     </section>
 
     <!-- CTA Section -->
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h3>Ready to Order Premium Filters?</h3>
-            <p>Get the perfect grease filters for your commercial kitchen system. Our experts are here to help you choose the right solution for optimal performance and safety.</p>
+            <h3 class="filter-slide">Ready to Order Premium Filters?</h3>
+            <p class="specs-reveal stagger-1">Get the perfect grease filters for your commercial kitchen system. Our experts are here to help you choose the right solution for optimal performance and safety.</p>
             <div class="row g-4 mt-4">
                 <div class="col-md-6">
-                    <div class="text-center">
+                    <div class="text-center honeycomb-emerge stagger-1">
                         <i class="fas fa-envelope-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
                         <h5 style="color: white; margin-bottom: 1rem;">Email for Quote</h5>
                         <p style="margin-bottom: 1.5rem; opacity: 0.9;">Get detailed specifications and pricing for your filter requirements</p>
@@ -606,7 +1057,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-center">
+                    <div class="text-center baffle-unfold stagger-2">
                         <i class="fas fa-phone-alt" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
                         <h5 style="color: white; margin-bottom: 1rem;">Call Our Experts</h5>
                         <p style="margin-bottom: 1.5rem; opacity: 0.9;">Speak directly with our team for immediate assistance and orders</p>
@@ -614,7 +1065,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
+            <div class="mt-4 pt-3 feature-sweep stagger-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
                 <p style="font-size: 1rem; margin: 0; opacity: 0.8;">
                     <i class="fas fa-clock me-2"></i>Fast response times • Custom sizing available • Professional installation support
                 </p>
@@ -627,43 +1078,43 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5>AUSSIE CENTRALS</h5>
-                    <p>Professional cleaning services and premium filter products for commercial kitchens across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
+                    <h5 class="honeycomb-emerge">AUSSIE CENTRALS</h5>
+                    <p class="specs-reveal stagger-1">Professional cleaning services and premium filter products for commercial kitchens across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
                 </div>
                 <div class="col-lg-2">
-                    <h5>Quick Links</h5>
+                    <h5 class="filter-slide">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li class="dimension-pop stagger-1"><a href="index.html">Home</a></li>
+                        <li class="dimension-pop stagger-2"><a href="index.html#services">Services</a></li>
+                        <li class="dimension-pop stagger-3"><a href="products.html">Products</a></li>
+                        <li class="dimension-pop stagger-4"><a href="index.html#about">About</a></li>
+                        <li class="dimension-pop stagger-5"><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Contact Info</h5>
+                    <h5 class="baffle-unfold">Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
-                        <li><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
+                        <li class="feature-sweep stagger-1"><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li class="feature-sweep stagger-2"><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li class="feature-sweep stagger-3"><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Business Hours</h5>
+                    <h5 class="specs-reveal">Business Hours</h5>
                     <ul class="list-unstyled">
-                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
-                        <li>Saturday: 8:00 AM - 4:00 PM</li>
-                        <li>Sunday: By Appointment</li>
+                        <li class="honeycomb-emerge stagger-1">Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li class="honeycomb-emerge stagger-2">Saturday: 8:00 AM - 4:00 PM</li>
+                        <li class="honeycomb-emerge stagger-3">Sunday: By Appointment</li>
                     </ul>
                 </div>
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p>&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                    <p class="filter-slide">&copy; 2025 Aussie Centrals. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p>Fully Insured & Compliant with Australian Standards</p>
+                    <p class="dimension-pop stagger-1">Fully Insured & Compliant with Australian Standards</p>
                 </div>
             </div>
         </div>
@@ -673,37 +1124,252 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Fade in animation on scroll
+        // Animation state
+        let animationsEnabled = true;
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // Enhanced Intersection Observer for product-specific animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
+            if (!animationsEnabled) return;
+            
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Special handling for section titles
+                    if (entry.target.classList.contains('section-title')) {
+                        entry.target.classList.add('in-view');
+                    }
+                    
+                    // Special effects for product images
+                    if (entry.target.classList.contains('product-image')) {
+                        setTimeout(() => {
+                            entry.target.style.transform = 'scale(1.02) rotate(1deg)';
+                            setTimeout(() => {
+                                entry.target.style.transform = 'scale(1) rotate(0deg)';
+                            }, 500);
+                        }, 200);
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        // Observe all animation elements
+        document.querySelectorAll('.filter-slide, .honeycomb-emerge, .baffle-unfold, .specs-reveal, .dimension-pop, .feature-sweep, .section-title, .product-image').forEach(el => {
             observer.observe(el);
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Product table row hover animations
+        document.querySelectorAll('.product-table tbody tr').forEach((row, index) => {
+            row.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = 'scale(1.02) translateX(10px)';
+                this.style.background = 'linear-gradient(90deg, rgba(231, 126, 34, 0.1), rgba(39, 174, 96, 0.05))';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = 'scale(1) translateX(0)';
+                this.style.background = '';
+            });
+        });
+
+        // Enhanced product image interactions
+        document.querySelectorAll('.product-image').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = 'scale(1.08) rotate(3deg)';
+                this.style.filter = 'brightness(1.1) contrast(1.1)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.filter = 'brightness(1) contrast(1)';
+            });
+        });
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Toggle animations function
+        function toggleAnimations() {
+            animationsEnabled = !animationsEnabled;
+            const body = document.body;
+            const toggleText = document.getElementById('toggleText');
+            
+            if (!animationsEnabled) {
+                body.classList.add('animations-disabled');
+                toggleText.textContent = 'Enable Animations';
+            } else {
+                body.classList.remove('animations-disabled');
+                toggleText.textContent = 'Disable Animations';
+            }
+        }
+
+        // Filter-themed interactions for category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                const icon = this.querySelector('.category-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(360deg) scale(1.2)';
+                    icon.style.color = 'var(--accent-color)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                const icon = this.querySelector('.category-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                    icon.style.color = 'var(--secondary-color)';
                 }
             });
         });
+
+        // Scroll event handlers with performance optimization
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateNavbar();
+            
+            // Trigger initial animations for visible elements
+            setTimeout(() => {
+                document.querySelectorAll('.filter-slide, .honeycomb-emerge, .baffle-unfold, .specs-reveal, .dimension-pop, .feature-sweep').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+
+        // Add filter-themed easter egg
+        let filterClickCount = 0;
+        document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+            if (e.detail === 3) { // 3 rapid clicks
+                filterClickCount++;
+                if (filterClickCount === 1) {
+                    // Add filter cleaning effect
+                    const filterEffect = document.createElement('div');
+                    filterEffect.innerHTML = '🔧 Filter Cleaning Mode Activated! 🔧';
+                    filterEffect.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 10000;
+                        background: var(--secondary-color);
+                        color: white;
+                        padding: 20px;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                        animation: filterCleanEffect 3s ease-in-out;
+                    `;
+                    
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes filterCleanEffect {
+                            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-10deg); }
+                            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(5deg); }
+                            100% { opacity: 0; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    document.body.appendChild(filterEffect);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(filterEffect);
+                        document.head.removeChild(style);
+                    }, 3000);
+                }
+            }
+        });
+
+        // Add subtle particle effect for enhanced visual appeal
+        if (animationsEnabled && window.innerWidth > 768) {
+            function createFilterParticle() {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--accent-color);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1;
+                    opacity: 0.6;
+                    animation: particleFloat 8s linear infinite;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (document.body.contains(particle)) {
+                        document.body.removeChild(particle);
+                    }
+                }, 8000);
+            }
+
+            // Add particle float animation
+            const particleStyle = document.createElement('style');
+            particleStyle.textContent = `
+                @keyframes particleFloat {
+                    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+                    10% { opacity: 0.6; }
+                    90% { opacity: 0.6; }
+                    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(particleStyle);
+
+            // Create particles periodically
+            setInterval(() => {
+                if (animationsEnabled && Math.random() > 0.7) {
+                    createFilterParticle();
+                }
+            }, 3000);
+        }
     </script>
 </body>
 </html>

@@ -35,26 +35,147 @@
             background-color: var(--background-color);
             line-height: 1.6;
             padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        /* Animations disabled state */
+        .animations-disabled * {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Animation Control Button */
+        .animation-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 120px;
+        }
+
+        .animation-toggle:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Floating Action Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: bobbing 2s ease-in-out infinite;
+        }
+
+        .floating-btn.phone {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .floating-btn.quote {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Header Styles */
         .navbar {
-            background-color: var(--white) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(15px);
         }
 
         .navbar-brand {
             font-weight: 700;
             font-size: 1.8rem;
             color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
         }
 
         .navbar-nav .nav-link {
             font-weight: 500;
             color: var(--text-color) !important;
             margin: 0 0.5rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before,
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
         }
 
         .navbar-nav .nav-link:hover,
@@ -69,20 +190,57 @@
             padding: 0.7rem 1.5rem;
             border-radius: 25px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
             background-color: #d35400;
             border-color: #d35400;
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 126, 34, 0.4);
         }
 
         /* Page Header */
         .page-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             color: var(--white);
-            padding: 80px 0 60px 0;
+            padding: 60px 0 40px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cameraPattern" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><rect x="15" y="15" width="10" height="10" fill="rgba(255,255,255,0.05)" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23cameraPattern)"/></svg>');
+            opacity: 0.3;
+            animation: cameraMove 18s linear infinite;
+        }
+
+        @keyframes cameraMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-40px, -40px); }
         }
 
         .page-header h1 {
@@ -114,15 +272,96 @@
         .breadcrumb-item a {
             color: var(--primary-color);
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .breadcrumb-item a:hover {
             color: var(--secondary-color);
         }
 
+        /* Creative Animation Classes for Gallery */
+        .photo-develop {
+            opacity: 0;
+            filter: sepia(100%) contrast(200%) brightness(150%);
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .photo-develop.visible {
+            opacity: 1;
+            filter: sepia(0%) contrast(100%) brightness(100%);
+            transform: scale(1);
+        }
+
+        .camera-focus {
+            opacity: 0;
+            filter: blur(8px);
+            transform: scale(1.1);
+            transition: all 0.7s ease;
+        }
+
+        .camera-focus.visible {
+            opacity: 1;
+            filter: blur(0px);
+            transform: scale(1);
+        }
+
+        .polaroid-drop {
+            opacity: 0;
+            transform: translateY(-100px) rotate(15deg);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .polaroid-drop.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+
+        .film-strip {
+            opacity: 0;
+            transform: translateX(-100px) skewX(-15deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .film-strip.visible {
+            opacity: 1;
+            transform: translateX(0) skewX(0deg);
+        }
+
+        .snapshot-reveal {
+            opacity: 0;
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .snapshot-reveal.visible {
+            opacity: 1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .lens-zoom {
+            opacity: 0;
+            transform: scale(0.3) rotate(45deg);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .lens-zoom.visible {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+        .stagger-8 { transition-delay: 0.8s; }
+
         /* Gallery Section */
         .gallery-section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .gallery-grid {
@@ -138,24 +377,25 @@
             overflow: hidden;
             background: var(--white);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
 
         .gallery-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: brightness(1.1) contrast(1.1);
         }
 
         .gallery-overlay {
@@ -166,7 +406,7 @@
             bottom: 0;
             background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(39, 174, 96, 0.8));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -179,17 +419,46 @@
 
         .gallery-overlay i {
             font-size: 2rem;
+            animation: zoomPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes zoomPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         .gallery-caption {
             padding: 1.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-caption::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-caption::before {
+            left: 100%;
         }
 
         .gallery-caption h5 {
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption h5 {
+            color: var(--secondary-color);
+            transform: scale(1.05);
         }
 
         .gallery-caption p {
@@ -198,7 +467,7 @@
             font-size: 0.9rem;
         }
 
-        /* Lightbox Modal */
+        /* Enhanced Lightbox Modal */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -207,7 +476,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(5px);
         }
 
         .lightbox-content {
@@ -218,12 +488,19 @@
             max-width: 800px;
             top: 50%;
             transform: translateY(-50%);
+            animation: lightboxAppear 0.3s ease-out;
+        }
+
+        @keyframes lightboxAppear {
+            0% { opacity: 0; transform: translateY(-50%) scale(0.8); }
+            100% { opacity: 1; transform: translateY(-50%) scale(1); }
         }
 
         .lightbox-content img {
             width: 100%;
             height: auto;
             border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
         .close-lightbox {
@@ -234,11 +511,13 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 10001;
         }
 
         .close-lightbox:hover {
             color: var(--secondary-color);
+            transform: scale(1.2) rotate(90deg);
         }
 
         .lightbox-caption {
@@ -246,13 +525,15 @@
             color: var(--white);
             padding: 20px;
             font-size: 1.1rem;
+            background: rgba(44, 62, 80, 0.9);
+            border-radius: 0 0 10px 10px;
         }
 
         /* Footer */
         .footer {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 60px 0 30px 0;
+            padding: 40px 0 20px 0;
         }
 
         .footer h5 {
@@ -263,15 +544,72 @@
         .footer a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::before {
+            width: 100%;
         }
 
         .footer a:hover {
             color: var(--secondary-color);
         }
 
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: width 0.6s ease;
+        }
+
+        .section-title.in-view h2::after {
+            width: 80px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .page-header {
+                padding: 40px 0 30px 0;
+            }
+            
             .page-header h1 {
                 font-size: 2.5rem;
             }
@@ -294,26 +632,59 @@
                 right: 20px;
                 font-size: 30px;
             }
-        }
 
-        /* Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
+            .gallery-section {
+                padding: 30px 0;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .footer {
+                padding: 30px 0 15px 0;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .animation-toggle {
+                right: 10px;
+                min-width: 100px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Animation Toggle Button -->
+    <button class="animation-toggle" onclick="toggleAnimations()">
+        <i class="fas fa-magic me-1"></i>
+        <span id="toggleText">Disable Animations</span>
+    </button>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+61451374786" class="floating-btn phone" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="index.html#quote" class="floating-btn quote" title="Get Quote">
+            <i class="fas fa-calculator"></i>
+        </a>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">
+            <a class="navbar-brand" href="index.html#home">
                 <img src="pics/logo.png" alt="Aussie Centrals Logo" class="me-2" style="height: 80px; width: auto;">AUSSIE CENTRALS
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -350,8 +721,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Our Work Gallery</h1>
-            <p>See the quality of our professional cleaning services through our before and after portfolio</p>
+            <h1 class="camera-focus">Our Work Gallery</h1>
+            <p class="photo-develop stagger-1">See the quality of our professional cleaning services through our before and after portfolio</p>
         </div>
     </section>
 
@@ -370,50 +741,50 @@
     <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
-            <div class="text-center mb-5 fade-in">
+            <div class="text-center mb-5 lens-zoom">
                 <h2 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem;">Professional Cleaning Results</h2>
                 <p style="color: #6c757d; font-size: 1.1rem;">Click on any image to view in full size</p>
             </div>
 
             <div class="gallery-grid">
                 <!-- Gallery Item 1 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/1.jpeg', 'Commercial Kitchen Before/After')">
+                <div class="gallery-item polaroid-drop stagger-1" onclick="openLightbox('pics/1.jpeg', 'Commercial Kitchen Before/After')">
                     <img src="pics/1.jpeg" alt="Commercial Kitchen Cleaning">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Commercial Kitchen Before/After</h5>
-                        <p>Professional canopy and exhaust cleaning</p>
+                        <h5>Commercial Stove cleaning</h5>
+                        <p>Professional  stove cleaning services</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 2 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/2.jpeg', 'Duct Cleaning Results')">
+                <div class="gallery-item film-strip stagger-2" onclick="openLightbox('pics/2.jpeg', 'Duct Cleaning Results')">
                     <img src="pics/2.jpeg" alt="Duct Cleaning Results">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Duct Cleaning Results</h5>
-                        <p>HVAC system deep cleaning service</p>
+                        <h5>Stove cleaning </h5>
+                        <p>Commercial Kitchen before and after</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 3 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/3.jpeg', 'Filter Exchange Service')">
+                <div class="gallery-item snapshot-reveal stagger-3" onclick="openLightbox('pics/3.jpeg', 'Filter Exchange Service')">
                     <img src="pics/3.jpeg" alt="Filter Exchange Service">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Exchange Service</h5>
-                        <p>Clean filter installation process</p>
+                        <h5>Floor cleaning </h5>
+                        <p>Restaurent kitchen floor cleaning</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 4 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/4.jpeg', 'Floor Cleaning Service')">
+                <div class="gallery-item photo-develop stagger-4" onclick="openLightbox('pics/4.jpeg', 'Floor Cleaning Service')">
                     <img src="pics/4.jpeg" alt="Floor Cleaning Service">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -425,7 +796,7 @@
                 </div>
 
                 <!-- Gallery Item 5 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/5.jpeg', 'Canopy Deep Clean')">
+                <div class="gallery-item camera-focus stagger-5" onclick="openLightbox('pics/5.jpeg', 'Canopy Deep Clean')">
                     <img src="pics/5.jpeg" alt="Canopy Deep Clean">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -437,175 +808,149 @@
                 </div>
 
                 <!-- Gallery Item 6 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/6.jpeg', 'HVAC Maintenance')">
+                <div class="gallery-item polaroid-drop stagger-6" onclick="openLightbox('pics/6.jpeg', 'HVAC Maintenance')">
                     <img src="pics/6.jpeg" alt="HVAC Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>HVAC Maintenance</h5>
-                        <p>Complete ventilation system service</p>
+                        <h5>Sink Pipe Cleaning</h5>
+                        <p>kitchen sink pipe cleaning </p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 7 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/7.jpeg', 'Emergency Clean Service')">
+                <div class="gallery-item film-strip stagger-7" onclick="openLightbox('pics/7.jpeg', 'Emergency Clean Service')">
                     <img src="pics/7.jpeg" alt="Emergency Clean Service">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Emergency Clean Service</h5>
-                        <p>24/7 rapid response cleaning</p>
+                        <h5>Floor cleaning</h5>
+                        <p>Rapid Before & After floor cleaning </p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 8 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/8.jpeg', 'Kitchen Equipment Clean')">
+                <div class="gallery-item snapshot-reveal stagger-8" onclick="openLightbox('pics/8.jpeg', 'Kitchen Equipment Clean')">
                     <img src="pics/8.jpeg" alt="Kitchen Equipment Clean">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Kitchen Equipment Clean</h5>
-                        <p>Specialized equipment maintenance</p>
+                        <h5>Restaurent Floor Cleaning</h5>
+                        <p>before & after Complete floor cleaning</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 9 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/9.jpeg', 'Compliance Inspection')">
+                <div class="gallery-item lens-zoom stagger-1" onclick="openLightbox('pics/9.jpeg', 'Compliance Inspection')">
                     <img src="pics/9.jpeg" alt="Compliance Inspection">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Compliance Inspection</h5>
-                        <p>Australian standards verification</p>
+                        <h5>Canopy and filters Cleaning</h5>
+                        <p>All type of canopy & filters cleaning services</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 10 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/10.jpeg', 'Large Scale Project')">
+                <div class="gallery-item photo-develop stagger-2" onclick="openLightbox('pics/10.jpeg', 'Large Scale Project')">
                     <img src="pics/10.jpeg" alt="Large Scale Project">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Large Scale Project</h5>
-                        <p>Multi-unit commercial cleaning</p>
+                        <h5>Kitchen Exhaust</h5>
+                        <p>commercial Exhaust fan cleaning</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 11 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/11.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item camera-focus stagger-3" onclick="openLightbox('pics/11.jpeg', 'Filter Maintenance')">
                     <img src="pics/11.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>GAS & Water Pipes</h5>
+                        <p>complete cleaning of GAS and water pipes</p>
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/15.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item polaroid-drop stagger-4" onclick="openLightbox('pics/15.jpeg', 'Filter Maintenance')">
                     <img src="pics/15.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>Steel Rack Cleaning</h5>
+                        <p>commercial steel rack cleaning </p>
                     </div>
                 </div>
 
-
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/16.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item film-strip stagger-5" onclick="openLightbox('pics/16.jpeg', 'Filter Maintenance')">
                     <img src="pics/16.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>Wall Tile cleaning</h5>
+                        <p>Regular service before & after results</p>
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/17.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item snapshot-reveal stagger-6" onclick="openLightbox('pics/17.jpeg', 'Filter Maintenance')">
                     <img src="pics/17.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>Kitchen fridge area cleaning</h5>
+                        <p>Regular service before & after results</p>
                     </div>
                 </div>
 
-
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/18.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item lens-zoom stagger-7" onclick="openLightbox('pics/18.jpeg', 'Filter Maintenance')">
                     <img src="pics/18.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>Oven Cleaning</h5>
+                        <p>before and after oil free oven</p>
                     </div>
                 </div>
 
-
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/19.jpeg', 'Filter Maintenance')">
+                <div class="gallery-item photo-develop stagger-8" onclick="openLightbox('pics/19.jpeg', 'Filter Maintenance')">
                     <img src="pics/19.jpeg" alt="Filter Maintenance">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Filter Maintenance</h5>
-                        <p>Regular service program results</p>
+                        <h5>Oven Cleaning</h5>
+                        <p>before and after oil free oven</p>
                     </div>
                 </div>
 
 
 
-                <!-- Gallery Item 12 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/10.jpeg', 'Team at Work')">
-                    <img src="pics/10.jpeg" alt="Team at Work">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="gallery-caption">
-                        <h5>Team at Work</h5>
-                        <p>Professional cleaning crew in action</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 13 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/11.jpeg', 'Quality Results')">
-                    <img src="pics/11.jpeg" alt="Quality Results">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="gallery-caption">
-                        <h5>Quality Results</h5>
-                        <p>Spotless finish guarantee</p>
-                    </div>
-                </div>
 
                 <!-- Gallery Item 14 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/12.jpeg', 'Safety Standards')">
+                <div class="gallery-item film-strip stagger-3" onclick="openLightbox('pics/12.jpeg', 'Safety Standards')">
                     <img src="pics/12.jpeg" alt="Safety Standards">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="gallery-caption">
-                        <h5>Safety Standards</h5>
-                        <p>Professional safety protocols</p>
+                        <h5>Canopy Cleaning service</h5>
+                        <p>Professional oil free cleaning service</p>
                     </div>
                 </div>
 
                 <!-- Gallery Item 15 -->
-                <div class="gallery-item fade-in" onclick="openLightbox('pics/13.jpeg', 'Customer Satisfaction')">
+                <div class="gallery-item snapshot-reveal stagger-4" onclick="openLightbox('pics/13.jpeg', 'Customer Satisfaction')">
                     <img src="pics/13.jpeg" alt="Customer Satisfaction">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -633,44 +978,44 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5>AUSSIE CENTRALS</h5>
-                    <p>Professional cleaning services for commercial kitchens, ducts, and HVAC systems across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
+                    <h5 class="camera-focus">AUSSIE CENTRALS</h5>
+                    <p class="photo-develop stagger-1">Professional cleaning services for commercial kitchens, ducts, and HVAC systems across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments.</p>
                 </div>
                 <div class="col-lg-2">
-                    <h5>Quick Links</h5>
+                    <h5 class="polaroid-drop">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li class="lens-zoom stagger-1"><a href="index.html">Home</a></li>
+                        <li class="lens-zoom stagger-2"><a href="index.html#services">Services</a></li>
+                        <li class="lens-zoom stagger-3"><a href="products.html">Products</a></li>
+                        <li class="lens-zoom stagger-4"><a href="gallery.html">Gallery</a></li>
+                        <li class="lens-zoom stagger-5"><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Contact Info</h5>
+                    <h5 class="film-strip">Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
-                        <li><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
+                        <li class="snapshot-reveal stagger-1"><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li class="snapshot-reveal stagger-2"><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li class="snapshot-reveal stagger-3"><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Business Hours</h5>
+                    <h5 class="photo-develop">Business Hours</h5>
                     <ul class="list-unstyled">
-                        <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
-                        <li>Saturday: 8:00 AM - 4:00 PM</li>
-                        <li>Sunday: Emergency Only</li>
-                        <li><strong>24/7 Emergency Service Available</strong></li>
+                        <li class="camera-focus stagger-1">Monday - Friday: 7:00 AM - 6:00 PM</li>
+                        <li class="camera-focus stagger-2">Saturday: 8:00 AM - 4:00 PM</li>
+                        <li class="camera-focus stagger-3">Sunday: Emergency Only</li>
+                        <li class="polaroid-drop stagger-4"><strong>24/7 Emergency Service Available</strong></li>
                     </ul>
                 </div>
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p>&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                    <p class="film-strip">&copy; 2025 Aussie Centrals. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p>Public Liability Insured & Compliant</p>
+                    <p class="lens-zoom stagger-1">Public Liability Insured & Compliant</p>
                 </div>
             </div>
         </div>
@@ -680,25 +1025,159 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Fade in animation on scroll
+        // Animation state
+        let animationsEnabled = true;
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // Enhanced Intersection Observer for gallery-specific animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
+            if (!animationsEnabled) return;
+            
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Special handling for section titles
+                    if (entry.target.classList.contains('section-title')) {
+                        entry.target.classList.add('in-view');
+                    }
+                    
+                    // Add camera flash effect for gallery items
+                    if (entry.target.classList.contains('gallery-item')) {
+                        setTimeout(() => {
+                            const flash = document.createElement('div');
+                            flash.style.cssText = `
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: rgba(255, 255, 255, 0.8);
+                                opacity: 0;
+                                pointer-events: none;
+                                border-radius: 15px;
+                                z-index: 10;
+                            `;
+                            entry.target.appendChild(flash);
+                            
+                            // Flash animation
+                            flash.style.transition = 'opacity 0.1s ease';
+                            flash.style.opacity = '1';
+                            setTimeout(() => {
+                                flash.style.opacity = '0';
+                                setTimeout(() => {
+                                    if (entry.target.contains(flash)) {
+                                        entry.target.removeChild(flash);
+                                    }
+                                }, 100);
+                            }, 50);
+                        }, Math.random() * 500 + 200);
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        // Observe all animation elements
+        document.querySelectorAll('.photo-develop, .camera-focus, .polaroid-drop, .film-strip, .snapshot-reveal, .lens-zoom, .section-title, .gallery-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Lightbox functionality
+        // Enhanced gallery item interactions
+        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+            // Add random tilt effect on load
+            item.style.transform = `rotate(${(Math.random() - 0.5) * 2}deg)`;
+            
+            item.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = 'translateY(-10px) rotateY(5deg) scale(1.02)';
+                this.style.zIndex = '10';
+                
+                // Add spotlight effect
+                const spotlight = document.createElement('div');
+                spotlight.style.cssText = `
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                    pointer-events: none;
+                    z-index: 1;
+                    animation: spotlight 2s ease-in-out infinite;
+                `;
+                this.appendChild(spotlight);
+                
+                // Add spotlight animation
+                if (!document.querySelector('#spotlightStyle')) {
+                    const style = document.createElement('style');
+                    style.id = 'spotlightStyle';
+                    style.textContent = `
+                        @keyframes spotlight {
+                            0%, 100% { opacity: 0; transform: scale(1); }
+                            50% { opacity: 1; transform: scale(1.1); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                this.style.transform = `rotate(${(Math.random() - 0.5) * 2}deg)`;
+                this.style.zIndex = '';
+                
+                // Remove spotlight
+                const spotlight = this.querySelector('div[style*="radial-gradient"]');
+                if (spotlight) {
+                    this.removeChild(spotlight);
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Toggle animations function
+        function toggleAnimations() {
+            animationsEnabled = !animationsEnabled;
+            const body = document.body;
+            const toggleText = document.getElementById('toggleText');
+            
+            if (!animationsEnabled) {
+                body.classList.add('animations-disabled');
+                toggleText.textContent = 'Enable Animations';
+                
+                // Reset all gallery item transforms
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.style.transform = '';
+                });
+            } else {
+                body.classList.remove('animations-disabled');
+                toggleText.textContent = 'Disable Animations';
+            }
+        }
+
+        // Enhanced Lightbox functionality
         function openLightbox(imageSrc, caption) {
             const modal = document.getElementById('lightboxModal');
             const modalImg = document.getElementById('lightboxImage');
@@ -708,6 +1187,30 @@
             modalImg.src = imageSrc;
             modalCaption.textContent = caption;
             document.body.style.overflow = 'hidden';
+            
+            // Add camera shutter sound effect simulation
+            if (animationsEnabled) {
+                const shutterEffect = document.createElement('div');
+                shutterEffect.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: black;
+                    z-index: 10000;
+                    opacity: 1;
+                    transition: opacity 0.1s ease;
+                `;
+                document.body.appendChild(shutterEffect);
+                
+                setTimeout(() => {
+                    shutterEffect.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(shutterEffect);
+                    }, 100);
+                }, 50);
+            }
         }
 
         function closeLightbox() {
@@ -729,6 +1232,134 @@
                 closeLightbox();
             }
         });
+
+        // Scroll event handlers with performance optimization
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateNavbar();
+            
+            // Trigger initial animations for visible elements
+            setTimeout(() => {
+                document.querySelectorAll('.photo-develop, .camera-focus, .polaroid-drop, .film-strip, .snapshot-reveal, .lens-zoom').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+
+        // Add photography-themed easter egg
+        let shutterClickCount = 0;
+        document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+            if (e.detail === 4) { // 4 rapid clicks
+                shutterClickCount++;
+                if (shutterClickCount === 1) {
+                    // Add camera shutter effect
+                    const shutterEffect = document.createElement('div');
+                    shutterEffect.innerHTML = '📸 Photography Mode Activated! 📸';
+                    shutterEffect.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 10000;
+                        background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+                        color: white;
+                        padding: 25px;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+                        animation: shutterPop 3s ease-in-out;
+                        border: 3px solid var(--secondary-color);
+                    `;
+                    
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes shutterPop {
+                            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotate(-15deg); }
+                            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(5deg); }
+                            40% { transform: translate(-50%, -50%) scale(0.9) rotate(-2deg); }
+                            60% { transform: translate(-50%, -50%) scale(1.1) rotate(1deg); }
+                            80% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+                            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) rotate(0deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    document.body.appendChild(shutterEffect);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(shutterEffect);
+                        document.head.removeChild(style);
+                    }, 3000);
+                }
+            }
+        });
+
+        // Add subtle photo frame particles
+        if (animationsEnabled && window.innerWidth > 768) {
+            function createPhotoParticle() {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 8px;
+                    height: 6px;
+                    background: var(--secondary-color);
+                    border-radius: 2px;
+                    pointer-events: none;
+                    z-index: 1;
+                    opacity: 0.4;
+                    animation: photoFloat 12s linear infinite;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (document.body.contains(particle)) {
+                        document.body.removeChild(particle);
+                    }
+                }, 12000);
+            }
+
+            // Add photo particle animation
+            const particleStyle = document.createElement('style');
+            particleStyle.textContent = `
+                @keyframes photoFloat {
+                    0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+                    10% { opacity: 0.4; }
+                    50% { transform: translateY(50vh) rotate(180deg) scale(1.2); }
+                    90% { opacity: 0.4; }
+                    100% { transform: translateY(-100px) rotate(360deg) scale(0.8); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(particleStyle);
+
+            // Create particles periodically
+            setInterval(() => {
+                if (animationsEnabled && Math.random() > 0.8) {
+                    createPhotoParticle();
+                }
+            }, 4000);
+        }
     </script>
 </body>
 </html>
