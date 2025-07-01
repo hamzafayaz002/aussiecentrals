@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Staff Provision - Aussie Centrals | Professional Cleaning Teams Perth</title>
+    <meta name="description" content="Professional trained cleaning staff available on flexible terms. Complete cleaning support with staff, equipment, and consumables included. Perth's trusted cleaning team provider.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E67E22;
+            --accent-color: #27AE60;
+            --background-color: #F8F9FA;
+            --text-color: #212529;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        /* Animations disabled state */
+        .animations-disabled * {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Animation Control Button */
+        .animation-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 120px;
+        }
+
+        .animation-toggle:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Floating Action Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: bobbing 2s ease-in-out infinite;
+        }
+
+        .floating-btn.phone {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .floating-btn.quote {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(15px);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 126, 34, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 60px 0 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="teamPattern" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="17" cy="17" r="1" fill="rgba(255,255,255,0.08)"/><circle cx="12.5" cy="20" r="0.8" fill="rgba(255,255,255,0.12)"/></pattern></defs><rect width="100" height="100" fill="url(%23teamPattern)"/></svg>');
+            opacity: 0.3;
+            animation: teamMove 16s linear infinite;
+        }
+
+        @keyframes teamMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-25px, -25px); }
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-nav {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Creative Animation Classes for Staff Page */
+        .team-march {
+            opacity: 0;
+            transform: translateX(-80px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .team-march.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        .staff-assemble {
+            opacity: 0;
+            transform: translateY(50px) rotateX(-30deg);
+            transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .staff-assemble.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        .uniform-fold {
+            opacity: 0;
+            transform: rotateY(-90deg) scale(0.8);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .uniform-fold.visible {
+            opacity: 1;
+            transform: rotateY(0deg) scale(1);
+        }
+
+        .supply-stock {
+            opacity: 0;
+            transform: translateY(-30px) scale(1.2);
+            filter: blur(3px);
+            transition: all 0.6s ease;
+        }
+
+        .supply-stock.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+        }
+
+        .schedule-slide {
+            opacity: 0;
+            transform: translateX(60px) skewX(10deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .schedule-slide.visible {
+            opacity: 1;
+            transform: translateX(0) skewX(0deg);
+        }
+
+        .quality-check {
+            opacity: 0;
+            transform: scale(0.6) rotate(45deg);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .quality-check.visible {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* Main Content Sections */
+        .content-section {
+            padding: 40px 0;
+        }
+
+        .section-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .section-card:hover::before {
+            left: 100%;
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--background-color);
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover .section-icon {
+            transform: rotate(360deg) scale(1.1);
+            color: var(--accent-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--background-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .feature-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(39, 174, 96, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Supplies List */
+        .supplies-list {
+            background: var(--background-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .supplies-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            transform: scaleY(0);
+            transition: transform 0.6s ease;
+        }
+
+        .supplies-list.visible::before {
+            transform: scaleY(1);
+        }
+
+        .supplies-list h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .supplies-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .supplies-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .supplies-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .supplies-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+
+        .supplies-list li:hover:before {
+            transform: scale(1.2);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(231, 126, 34, 0.4);
+        }
+
+        .step-content h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: #6c757d;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ctaDots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23ctaDots)"/></svg>');
+            animation: ctaDotsMove 20s linear infinite;
+        }
+
+        @keyframes ctaDotsMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
+        }
+
+        .cta-section h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 25px;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.5s ease;
+        }
+
+        .btn-outline-light:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer h5 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::before {
+            width: 100%;
+        }
+
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 40px 0 30px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .step-item {
+                padding-left: 3.5rem;
+            }
+
+            .step-number {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+
+            .content-section {
+                padding: 30px 0;
+            }
+
+            .cta-section {
+                padding: 40px 0;
+            }
+
+            .footer {
+                padding: 30px 0 15px 0;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .animation-toggle {
+                right: 10px;
+                min-width: 100px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Animation Toggle Button -->
+    <button class="animation-toggle" onclick="toggleAnimations()">
+        <i class="fas fa-magic me-1"></i>
+        <span id="toggleText">Disable Animations</span>
+    </button>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+61451374786" class="floating-btn phone" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="index.html#quote" class="floating-btn quote" title="Get Quote">
+            <i class="fas fa-calculator"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html#home">
+                <img src="pics/logo.png" alt="Aussie Centrals Logo" class="me-2" style="height: 80px; width: auto;">AUSSIE CENTRALS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="staff_provisioning.html">Staff Provision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="index.html#quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="team-march">Cleaning Staff Provision</h1>
+            <p class="staff-assemble stagger-1">Complete cleaning support tailored to you. Professional, trained cleaning staff available on flexible terms with all equipment and supplies included.</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-nav">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Staff Provision</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card uniform-fold">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">Complete Cleaning Support</h2>
+                    </div>
+                </div>
+                
+                <p class="section-description supply-stock">
+                    At Aussie Centrals, we understand that maintaining a clean, hygienic, and safe environment is essential for your business's success and wellbeing. That's why we offer professional, trained cleaning staff available on flexible terms — whether you need hourly, daily, monthly, or contract-based cleaning support.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card schedule-slide">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">What We Offer</h2>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card staff-assemble stagger-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h4>Fully Trained & Vetted Cleaners</h4>
+                        <p>Our cleaning teams are carefully selected, background-checked, and trained to deliver consistent, high-quality results every time.</p>
+                    </div>
+
+                    <div class="feature-card quality-check stagger-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4>Flexible Scheduling</h4>
+                        <p>Whether you require cleaning every day, weekly, or just occasional deep cleans, we tailor our services to fit your specific operational needs and budget.</p>
+                    </div>
+
+                    <div class="feature-card uniform-fold stagger-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h4>Complete Cleaning Package</h4>
+                        <p>From dedicated cleaning personnel to all the necessary consumables and equipment, we provide a comprehensive cleaning solution so you don't have to worry about a thing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consumables & Equipment Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card supply-stock">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">Included Consumables & Equipment</h2>
+                    </div>
+                </div>
+                
+                <p class="section-description team-march">
+                    To make your experience hassle-free, Aussie Centrals supplies all essential cleaning consumables and equipment with our staff provision service:
+                </p>
+
+                <div class="supplies-list staff-assemble stagger-1">
+                    <h5><i class="fas fa-check-circle me-2"></i>Complete Supply Package</h5>
+                    <ul>
+                        <li class="uniform-fold stagger-1">Hand towels and toilet paper rolls</li>
+                        <li class="uniform-fold stagger-2">Bin bags and waste disposal supplies</li>
+                        <li class="uniform-fold stagger-3">Sanitising chemicals and disinfectants</li>
+                        <li class="uniform-fold stagger-4">Gloves and personal protective equipment (PPE)</li>
+                        <li class="uniform-fold stagger-5">Spray bottles, wipes, and surface cleaning agents</li>
+                        <li class="uniform-fold stagger-6">Cleaning equipment such as vacuum cleaners, mops, scrubbers, and more</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info schedule-slide stagger-2" style="background-color: rgba(39, 174, 96, 0.1); border: 1px solid var(--accent-color); border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem;">
+                    <h5 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-lightbulb me-2"></i>All-Inclusive Solution</h5>
+                    <p style="margin: 0; color: var(--text-color);">You simply tell us your cleaning requirements, and we'll provide everything needed — from cleaners to chemicals and tools — under one contract. This means no more juggling multiple suppliers or buying cleaning products yourself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card quality-check">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">Why Choose Our Cleaning Staff Provision?</h2>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card team-march stagger-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>One-Stop Solution</h4>
+                        <p>We handle recruitment, training, supervision, and supply of consumables, giving you peace of mind and freeing you to focus on your core business.</p>
+                    </div>
+
+                    <div class="feature-card staff-assemble stagger-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>No Subcontracting</h4>
+                        <p>All our cleaners are directly employed and managed by Aussie Centrals, ensuring accountability, consistency, and superior quality control.</p>
+                    </div>
+
+                    <div class="feature-card uniform-fold stagger-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4>Cost-Effective</h4>
+                        <p>Without subcontractors, our pricing remains competitive and transparent — no hidden costs or surprises.</p>
+                    </div>
+
+                    <div class="feature-card schedule-slide stagger-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4>Customised Cleaning Plans</h4>
+                        <p>Whether it's regular office cleaning, retail space maintenance, or specialised cleaning tasks, we design a service package tailored exactly to your needs.</p>
+                    </div>
+
+                    <div class="feature-card supply-stock stagger-5">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Health & Safety Compliance</h4>
+                        <p>Our teams follow strict workplace health and safety practices and hygiene standards, protecting your staff, customers, and premises.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Started Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card team-march">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">How to Get Started</h2>
+                    </div>
+                </div>
+                
+                <p class="section-description staff-assemble">
+                    We make it easy to get the right cleaning solution for your business:
+                </p>
+
+                <div class="process-steps uniform-fold stagger-1">
+                    <div class="step-item schedule-slide stagger-1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Contact Us</h5>
+                            <p>Tell us about your space, cleaning frequency, and any special requirements.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item supply-stock stagger-2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Site Visit & Assessment</h5>
+                            <p>We'll arrange a consultation to understand your needs and inspect your premises if required.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item quality-check stagger-3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Quotation & Proposal</h5>
+                            <p>Based on your input, we provide a detailed, transparent quote covering cleaning staff, consumables, equipment, and any optional services.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item team-march stagger-4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Service Agreement</h5>
+                            <p>Once agreed, our professional team starts delivering your customised cleaning solution on schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-card staff-assemble">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div>
+                        <h2 class="section-title">Additional Services</h2>
+                    </div>
+                </div>
+                
+                <p class="section-description uniform-fold">
+                    If you need extra deep cleaning or specialist cleaning beyond your regular staff provision, Aussie Centrals can provide those as part of the package or on-demand. We've got you covered for all cleaning challenges, big or small.
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card schedule-slide stagger-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <h4>Deep Cleaning Services</h4>
+                        <p>Comprehensive deep cleaning for periodic maintenance and special requirements.</p>
+                    </div>
+
+                    <div class="feature-card supply-stock stagger-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Specialist Cleaning</h4>
+                        <p>Kitchen canopy cleaning, carpet cleaning, pressure washing, and specialized equipment maintenance.</p>
+                    </div>
+
+                    <div class="feature-card quality-check stagger-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>On-Demand Services</h4>
+                        <p>Emergency cleaning, event preparation, and additional services as needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3 class="uniform-fold">Your Trusted Cleaning Partner</h3>
+            <p class="staff-assemble stagger-1">Choosing Aussie Centrals means partnering with a reliable, professional team dedicated to making your workspace spotless and safe, with no hassle and complete transparency.</p>
+            <div class="row g-4 mt-4">
+                <div class="col-md-6">
+                    <div class="text-center team-march stagger-1">
+                        <i class="fas fa-envelope-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
+                        <h5 style="color: white; margin-bottom: 1rem;">Get Your Custom Quote</h5>
+                        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Email us your requirements for a detailed staff provision proposal</p>
+                        <a href="mailto:services@aussiecentrals.com.au" class="btn btn-outline-light btn-lg">Email Us</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center schedule-slide stagger-2">
+                        <i class="fas fa-phone-alt" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
+                        <h5 style="color: white; margin-bottom: 1rem;">Speak to Our Team</h5>
+                        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Call now to discuss your cleaning staff requirements</p>
+                        <a href="tel:+61451374786" class="btn btn-primary btn-lg">Call 0451 374 786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 supply-stock stagger-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: 1rem; margin: 0; opacity: 0.8;">
+                    <i class="fas fa-heart me-2"></i>Say goodbye to cleaning worries for good • Professional staff • All supplies included • Flexible contracts
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="team-march">AUSSIE CENTRALS</h5>
+                    <p class="staff-assemble stagger-1">Professional cleaning staff provision and services across Perth. Your trusted partner for maintaining clean, safe, and compliant business environments with fully trained teams and complete supply packages.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="uniform-fold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="schedule-slide stagger-1"><a href="index.html">Home</a></li>
+                        <li class="schedule-slide stagger-2"><a href="services.html">Services</a></li>
+                        <li class="schedule-slide stagger-3"><a href="products.html">Products</a></li>
+                        <li class="schedule-slide stagger-4"><a href="gallery.html">Gallery</a></li>
+                        <li class="schedule-slide stagger-5"><a href="staff_provisioning.html">Staff Provision</a></li>
+                        <li class="schedule-slide stagger-6"><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="supply-stock">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="quality-check stagger-1"><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li class="quality-check stagger-2"><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li class="quality-check stagger-3"><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="team-march">Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li class="staff-assemble stagger-1">Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li class="staff-assemble stagger-2">Saturday: 8:00 AM - 4:00 PM</li>
+                        <li class="staff-assemble stagger-3">Sunday: By Appointment</li>
+                        <li class="uniform-fold stagger-4"><strong>Staff Available 24/7 for Contracts</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="schedule-slide">&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="supply-stock stagger-1">Fully Insured & Compliant with Australian Standards</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Animation state
+        let animationsEnabled = true;
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // Enhanced Intersection Observer for staff-specific animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (!animationsEnabled) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Special handling for section cards
+                    if (entry.target.classList.contains('section-card')) {
+                        setTimeout(() => {
+                            const icon = entry.target.querySelector('.section-icon');
+                            if (icon) {
+                                icon.style.transform = 'rotate(360deg) scale(1.1)';
+                                setTimeout(() => {
+                                    icon.style.transform = 'rotate(0deg) scale(1)';
+                                }, 600);
+                            }
+                        }, 300);
+                    }
+                    
+                    // Add team coordination effect for feature cards
+                    if (entry.target.classList.contains('features-grid')) {
+                        const cards = entry.target.querySelectorAll('.feature-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.style.transform = 'translateY(-5px)';
+                                setTimeout(() => {
+                                    card.style.transform = 'translateY(0)';
+                                }, 200);
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.team-march, .staff-assemble, .uniform-fold, .supply-stock, .schedule-slide, .quality-check, .section-card, .features-grid').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced feature card interactions
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                
+                // Team coordination effect
+                const allCards = document.querySelectorAll('.feature-card');
+                allCards.forEach((otherCard, otherIndex) => {
+                    if (otherCard !== this) {
+                        otherCard.style.transform = 'scale(0.95)';
+                        otherCard.style.opacity = '0.8';
+                    }
+                });
+                
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+                this.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                
+                // Reset all cards
+                const allCards = document.querySelectorAll('.feature-card');
+                allCards.forEach((otherCard) => {
+                    otherCard.style.transform = '';
+                    otherCard.style.opacity = '';
+                    otherCard.style.zIndex = '';
+                });
+            });
+        });
+
+        // Process step animations
+        document.querySelectorAll('.step-item').forEach((step, index) => {
+            step.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                
+                const number = this.querySelector('.step-number');
+                number.style.transform = 'scale(1.2) rotate(360deg)';
+                number.style.background = 'linear-gradient(135deg, var(--accent-color), var(--secondary-color))';
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                
+                const number = this.querySelector('.step-number');
+                number.style.transform = 'scale(1) rotate(0deg)';
+                number.style.background = 'linear-gradient(135deg, var(--secondary-color), var(--accent-color))';
+            });
+        });
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Toggle animations function
+        function toggleAnimations() {
+            animationsEnabled = !animationsEnabled;
+            const body = document.body;
+            const toggleText = document.getElementById('toggleText');
+            
+            if (!animationsEnabled) {
+                body.classList.add('animations-disabled');
+                toggleText.textContent = 'Enable Animations';
+            } else {
+                body.classList.remove('animations-disabled');
+                toggleText.textContent = 'Disable Animations';
+            }
+        }
+
+        // Scroll event handlers with performance optimization
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateNavbar();
+            
+            // Trigger initial animations for visible elements
+            setTimeout(() => {
+                document.querySelectorAll('.team-march, .staff-assemble, .uniform-fold, .supply-stock, .schedule-slide, .quality-check').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+
+        // Add staff-themed easter egg
+        let teamClickCount = 0;
+        document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+            if (e.detail === 5) { // 5 rapid clicks
+                teamClickCount++;
+                if (teamClickCount === 1) {
+                    // Add team assembly effect
+                    const teamEffect = document.createElement('div');
+                    teamEffect.innerHTML = '👥 Team Assembly Mode Activated! 👥';
+                    teamEffect.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 10000;
+                        background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+                        color: white;
+                        padding: 25px;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+                        animation: teamAssemble 3s ease-in-out;
+                        border: 3px solid var(--secondary-color);
+                    `;
+                    
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes teamAssemble {
+                            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotateY(-180deg); }
+                            25% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotateY(-90deg); }
+                            50% { transform: translate(-50%, -50%) scale(0.9) rotateY(0deg); }
+                            75% { transform: translate(-50%, -50%) scale(1.1) rotateY(90deg); }
+                            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) rotateY(180deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    document.body.appendChild(teamEffect);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(teamEffect);
+                        document.head.removeChild(style);
+                    }, 3000);
+                }
+            }
+        });
+
+        // Add team coordination particles
+        if (animationsEnabled && window.innerWidth > 768) {
+            function createTeamParticle() {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 6px;
+                    height: 6px;
+                    background: var(--accent-color);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1;
+                    opacity: 0.5;
+                    animation: teamFloat 10s linear infinite;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (document.body.contains(particle)) {
+                        document.body.removeChild(particle);
+                    }
+                }, 10000);
+            }
+
+            // Add team particle animation
+            const particleStyle = document.createElement('style');
+            particleStyle.textContent = `
+                @keyframes teamFloat {
+                    0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+                    10% { opacity: 0.5; }
+                    50% { transform: translateY(50vh) rotate(180deg) scale(1.5); }
+                    90% { opacity: 0.5; }
+                    100% { transform: translateY(-100px) rotate(360deg) scale(0.5); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(particleStyle);
+
+            // Create particles periodically
+            setInterval(() => {
+                if (animationsEnabled && Math.random() > 0.85) {
+                    createTeamParticle();
+                }
+            }, 3500);
+        }
+    </script>
+</body>
+</html>

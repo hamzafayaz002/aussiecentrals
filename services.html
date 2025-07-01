@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Cleaning Services - Aussie Centrals | Perth WA</title>
+    <meta name="description" content="Comprehensive cleaning services in Perth. Kitchen & canopy cleaning, office cleaning, carpet care, pressure washing, end of lease cleaning, and builder's clean services.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E67E22;
+            --accent-color: #27AE60;
+            --background-color: #F8F9FA;
+            --text-color: #212529;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        /* Animations disabled state */
+        .animations-disabled * {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Animation Control Button */
+        .animation-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 120px;
+        }
+
+        .animation-toggle:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Floating Action Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: bobbing 2s ease-in-out infinite;
+        }
+
+        .floating-btn.phone {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .floating-btn.quote {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(15px);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before,
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 126, 34, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 60px 0 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="servicePattern" width="35" height="35" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.08)"/><rect x="15" y="15" width="5" height="5" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23servicePattern)"/></svg>');
+            opacity: 0.3;
+            animation: serviceMove 22s linear infinite;
+        }
+
+        @keyframes serviceMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-35px, -35px); }
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-nav {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Creative Animation Classes for Services Page */
+        .service-sweep {
+            opacity: 0;
+            transform: translateX(-100px) rotateZ(-5deg);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-sweep.visible {
+            opacity: 1;
+            transform: translateX(0) rotateZ(0deg);
+        }
+
+        .tool-emerge {
+            opacity: 0;
+            transform: translateY(60px) scale(0.7);
+            transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .tool-emerge.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .clean-unfold {
+            opacity: 0;
+            transform: rotateX(-90deg) translateZ(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .clean-unfold.visible {
+            opacity: 1;
+            transform: rotateX(0deg) translateZ(0);
+        }
+
+        .detail-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: all 0.6s ease;
+        }
+
+        .detail-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        .standard-check {
+            opacity: 0;
+            transform: scale(0.5) rotate(45deg);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .standard-check.visible {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .maintenance-flow {
+            opacity: 0;
+            transform: translateX(80px) skewX(-15deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .maintenance-flow.visible {
+            opacity: 1;
+            transform: translateX(0) skewX(0deg);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+
+        /* Main Content Sections */
+        .content-section {
+            padding: 40px 0;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(231, 126, 34, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--background-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(360deg) scale(1.1);
+            color: var(--accent-color);
+        }
+
+        .service-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+
+        /* Feature Lists */
+        .feature-section {
+            margin-bottom: 2rem;
+        }
+
+        .feature-section h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-section h5 i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .feature-list {
+            background: var(--background-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            transform: scaleY(0);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-list.visible::before {
+            transform: scaleY(1);
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+
+        .feature-list li:hover:before {
+            transform: scale(1.2);
+        }
+
+        /* Standards & Compliance */
+        .standards-section {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(44, 62, 80, 0.05));
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .standards-section h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .standard-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .standard-item:before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .standard-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Service Options */
+        .service-options {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border: 2px solid var(--background-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-options:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+        }
+
+        .service-options h5 {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ctaDots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23ctaDots)"/></svg>');
+            animation: ctaDotsMove 20s linear infinite;
+        }
+
+        @keyframes ctaDotsMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
+        }
+
+        .cta-section h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 25px;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.5s ease;
+        }
+
+        .btn-outline-light:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer h5 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::before {
+            width: 100%;
+        }
+
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 40px 0 30px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .feature-list ul {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 30px 0;
+            }
+
+            .cta-section {
+                padding: 40px 0;
+            }
+
+            .footer {
+                padding: 30px 0 15px 0;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .animation-toggle {
+                right: 10px;
+                min-width: 100px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Animation Toggle Button -->
+    <button class="animation-toggle" onclick="toggleAnimations()">
+        <i class="fas fa-magic me-1"></i>
+        <span id="toggleText">Disable Animations</span>
+    </button>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+61451374786" class="floating-btn phone" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="index.html#quote" class="floating-btn quote" title="Get Quote">
+            <i class="fas fa-calculator"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html#home">
+                <img src="pics/logo.png" alt="Aussie Centrals Logo" class="me-2" style="height: 80px; width: auto;">AUSSIE CENTRALS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="staff_provisioning.html">Staff Provision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="index.html#quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="service-sweep">What We Do</h1>
+            <p class="tool-emerge stagger-1">Comprehensive professional cleaning services across Perth and Western Australia. From kitchen canopy cleaning to office maintenance, we deliver quality results you can trust.</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-nav">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Services</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Kitchen & Canopy Cleaning Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card clean-unfold">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Kitchen & Canopy Cleaning</h2>
+                    </div>
+                </div>
+
+                <div class="feature-section detail-reveal stagger-1">
+                    <h5><i class="fas fa-broom"></i>What We Clean:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="tool-emerge stagger-1">Exhaust hoods, filters, ductwork, and rooftop exhaust fans</li>
+                            <li class="tool-emerge stagger-2">Ovens, fryers, grills, cooktops, and all kitchen equipment</li>
+                            <li class="tool-emerge stagger-3">Stainless steel benches and prep areas</li>
+                            <li class="tool-emerge stagger-4">Splashbacks, tiled surfaces, sinks, and drains</li>
+                            <li class="tool-emerge stagger-5">Ceilings, lights, and floor areas within kitchen boundaries</li>
+                            <li class="tool-emerge stagger-6">Canopy inside and outside including duct fan cleaning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section standard-check stagger-2">
+                    <h5><i class="fas fa-shield-alt"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="maintenance-flow stagger-1">Reduces fire hazards</li>
+                            <li class="maintenance-flow stagger-2">Ensures hygiene and safety compliance</li>
+                            <li class="maintenance-flow stagger-3">Enhances ventilation and kitchen performance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="standards-section service-sweep stagger-3">
+                    <h5><i class="fas fa-certificate"></i>Standards We Follow:</h5>
+                    <div class="standard-item detail-reveal stagger-1">
+                        <span class="standard-name">AS 1851-2012:</span> Routine service of fire protection systems specific to kitchen exhausts
+                    </div>
+                    <div class="standard-item detail-reveal stagger-2">
+                        <span class="standard-name">NFPA Guidelines:</span> Ventilation system fire prevention
+                    </div>
+                    <div class="standard-item detail-reveal stagger-3">
+                        <span class="standard-name">IKECA Principles:</span> International Kitchen Exhaust Cleaning Association — international best practices
+                    </div>
+                    <div class="alert alert-info mt-3 standard-check stagger-4" style="background-color: rgba(39, 174, 96, 0.1); border: 1px solid var(--accent-color); border-radius: 8px; padding: 1rem; margin: 0;">
+                        <i class="fas fa-award me-2"></i><strong>Certification:</strong> We provide validity certificates for canopy and exhaust fan cleaning, suitable for compliance and inspections.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial & Office Cleaning Section -->
+
+
+
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card tool-emerge">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Commercial & Office Cleaning</h2>
+                    </div>
+                </div>
+
+                <p class="service-description detail-reveal">Regular or one-time cleaning solutions tailored for offices, warehouses, and construction sites.</p>
+
+                <div class="feature-section standard-check stagger-1">
+                    <h5><i class="fas fa-clipboard-list"></i>What We Clean:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="service-sweep stagger-1">Desks, meeting rooms, kitchenettes, and washrooms</li>
+                            <li class="service-sweep stagger-2">Floors, windows, and common areas</li>
+                            <li class="service-sweep stagger-3">Dusting, vacuuming, mopping, and sanitising all surfaces</li>
+                            <li class="service-sweep stagger-4">Rubbish removal and bin relining</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section maintenance-flow stagger-2">
+                    <h5><i class="fas fa-thumbs-up"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="clean-unfold stagger-1">Creates a clean and professional work environment</li>
+                            <li class="clean-unfold stagger-2">Supports employee health and productivity</li>
+                            <li class="clean-unfold stagger-3">Maintains the condition and value of the workplace</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-options tool-emerge stagger-3">
+                    <h5><i class="fas fa-calendar-check"></i>Service Options:</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="detail-reveal stagger-1" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-clock" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            Scheduled regular cleaning (daily, weekly, fortnightly, or monthly)
+                        </li>
+                        <li class="detail-reveal stagger-2" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-calendar-day" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            One-off or periodic cleans tailored to your needs
+                        </li>
+                    </ul>
+                    <div class="alert alert-secondary mt-3 standard-check stagger-3" style="background-color: rgba(231, 126, 34, 0.1); border: 1px solid var(--secondary-color); border-radius: 8px; padding: 1rem; margin: 0;">
+                        <i class="fas fa-lightbulb me-2"></i><strong>Focus on What Matters:</strong> Let us handle the mess while you focus on what matters most.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Lease Cleaning Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card maintenance-flow">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">End of Lease Cleaning</h2>
+                    </div>
+                </div>
+
+                <div class="feature-section detail-reveal stagger-1">
+                    <h5><i class="fas fa-checklist"></i>What We Clean:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="tool-emerge stagger-1">All rooms including bedrooms, living areas, kitchens, and bathrooms</li>
+                            <li class="tool-emerge stagger-2">Deep carpet and floor cleaning with stain and odor removal</li>
+                            <li class="tool-emerge stagger-3">Kitchen appliances, cupboards, sinks, and bench tops</li>
+                            <li class="tool-emerge stagger-4">Bathroom sanitisation including showers, toilets, tiles, and fixtures</li>
+                            <li class="tool-emerge stagger-5">Walls, skirting boards, windows, and door frames</li>
+                            <li class="tool-emerge stagger-6">Removal of cobwebs, dusting of surfaces, light fittings, and vents</li>
+                            <li class="tool-emerge stagger-7">Internal window and glass door cleaning</li>
+                            <li class="service-sweep stagger-1">Rubbish removal and thorough vacuuming</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section standard-check stagger-2">
+                    <h5><i class="fas fa-medal"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="clean-unfold stagger-1">Ensures compliance with tenancy agreements and landlord standards</li>
+                            <li class="clean-unfold stagger-2">Helps secure your full bond refund</li>
+                            <li class="clean-unfold stagger-3">Saves you time and stress during your move-out process</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-options maintenance-flow stagger-3">
+                    <h5><i class="fas fa-star"></i>Service Features:</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="detail-reveal stagger-1" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-clock" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            Flexible scheduling to meet your move-out timeline
+                        </li>
+                        <li class="detail-reveal stagger-2" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-leaf" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            Use of eco-friendly and effective cleaning products
+                        </li>
+                        <li class="detail-reveal stagger-3" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-user-graduate" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            Experienced staff trained in end-of-lease cleaning requirements
+                        </li>
+                        <li class="detail-reveal stagger-4" style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-plus-circle" style="position: absolute; left: 0; top: 0.6rem; color: var(--accent-color);"></i>
+                            Optional carpet steam cleaning and pest control available
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carpet Cleaning & Upholstery Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card clean-unfold">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Carpet Cleaning & Upholstery</h2>
+                    </div>
+                </div>
+
+                <p class="service-description detail-reveal">Professional carpet steam cleaning and upholstery care for offices, commercial spaces, and homes.</p>
+
+                <div class="feature-section standard-check stagger-1">
+                    <h5><i class="fas fa-spray-can"></i>What We Do:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="tool-emerge stagger-1">Deep steam extraction removes dirt, stains, and allergens from carpets</li>
+                            <li class="tool-emerge stagger-2">Stain treatment and deodorising to restore freshness</li>
+                            <li class="tool-emerge stagger-3">Upholstery cleaning for chairs, couches, and fabric furnishings</li>
+                            <li class="tool-emerge stagger-4">Fast drying techniques to minimise downtime</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section maintenance-flow stagger-2">
+                    <h5><i class="fas fa-heart"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="service-sweep stagger-1">Improves indoor air quality and hygiene</li>
+                            <li class="service-sweep stagger-2">Extends life of carpets and furniture</li>
+                            <li class="service-sweep stagger-3">Enhances overall appearance of your space</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Cleaning Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card service-sweep">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Floor Cleaning</h2>
+                    </div>
+                </div>
+
+                <p class="service-description detail-reveal">Comprehensive floor care including scrubbing and maintenance for various surfaces.</p>
+
+                <div class="feature-section tool-emerge stagger-1">
+                    <h5><i class="fas fa-tools"></i>Services Include:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="clean-unfold stagger-1">Scrubbing and cleaning for tile, vinyl, concrete, marble, and other flooring types</li>
+                            <li class="clean-unfold stagger-2">Stain and mark removal</li>
+                            <li class="clean-unfold stagger-3">Floor sealing and polishing options available upon request</li>
+                            <li class="clean-unfold stagger-4">Regular maintenance plans to keep floors looking pristine</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section standard-check stagger-2">
+                    <h5><i class="fas fa-shield-alt"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="maintenance-flow stagger-1">Maintains safety by reducing slips and trips</li>
+                            <li class="maintenance-flow stagger-2">Preserves floor aesthetics and longevity</li>
+                            <li class="maintenance-flow stagger-3">Keeps your environment clean and professional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pressure Washing Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card tool-emerge">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Pressure Washing</h2>
+                    </div>
+                </div>
+
+                <p class="service-description detail-reveal">Powerful cleaning for external surfaces to remove dirt, grime, and stains.</p>
+
+                <div class="feature-section maintenance-flow stagger-1">
+                    <h5><i class="fas fa-water"></i>What We Clean:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="standard-check stagger-1">Driveways, patios, and pathways</li>
+                            <li class="standard-check stagger-2">Building exteriors and walls</li>
+                            <li class="standard-check stagger-3">Outdoor furniture and equipment</li>
+                            <li class="standard-check stagger-4">High-traffic areas prone to dirt build-up</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-section clean-unfold stagger-2">
+                    <h5><i class="fas fa-home"></i>Why It Matters:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="service-sweep stagger-1">Restores curb appeal and property value</li>
+                            <li class="service-sweep stagger-2">Removes harmful contaminants and mildew</li>
+                            <li class="service-sweep stagger-3">Prepares surfaces for painting or maintenance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Builder's Clean / Post-Construction Cleaning Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="service-card standard-check">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div>
+                        <h2 class="service-title">Builder's Clean / Post-Construction Cleaning</h2>
+                    </div>
+                </div>
+
+                <p class="service-description detail-reveal">After construction or renovation, our builder's cleaning team prepares your site for handover or use by removing all debris and dust.</p>
+
+                <div class="feature-section tool-emerge stagger-1">
+                    <h5><i class="fas fa-hammer"></i>Service Scope:</h5>
+                    <div class="feature-list">
+                        <ul>
+                            <li class="maintenance-flow stagger-1">Removal of paint marks, silicone, grout haze, and construction residue</li>
+                            <li class="maintenance-flow stagger-2">Vacuuming and mopping all floor surfaces</li>
+                            <li class="maintenance-flow stagger-3">Deep cleaning of kitchens, bathrooms, and joinery</li>
+                            <li class="maintenance-flow stagger-4">Internal window and frame cleaning</li>
+                            <li class="maintenance-flow stagger-5">Rubbish removal (can be arranged)</li>
+                            <li class="maintenance-flow stagger-6">Final polish for fixtures and surfaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3 class="clean-unfold">Ready to Experience Professional Cleaning?</h3>
+            <p class="tool-emerge stagger-1">Choose from our comprehensive range of cleaning services. Professional results, competitive pricing, and reliable service across Perth and Western Australia.</p>
+            <div class="row g-4 mt-4">
+                <div class="col-md-6">
+                    <div class="text-center service-sweep stagger-1">
+                        <i class="fas fa-envelope-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
+                        <h5 style="color: white; margin-bottom: 1rem;">Get Service Quote</h5>
+                        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Email us your cleaning requirements for a detailed service proposal</p>
+                        <a href="mailto:services@aussiecentrals.com.au" class="btn btn-outline-light btn-lg">Email Us</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center detail-reveal stagger-2">
+                        <i class="fas fa-phone-alt" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.8;"></i>
+                        <h5 style="color: white; margin-bottom: 1rem;">Speak to Our Experts</h5>
+                        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Call now to discuss your cleaning service needs</p>
+                        <a href="tel:+61451374786" class="btn btn-primary btn-lg">Call 0451 374 786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 standard-check stagger-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: 1rem; margin: 0; opacity: 0.8;">
+                    <i class="fas fa-award me-2"></i>Professional certified cleaning • Australian standards compliant • Fully insured services
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="service-sweep">AUSSIE CENTRALS</h5>
+                    <p class="tool-emerge stagger-1">Professional cleaning services across Perth and Western Australia. From kitchen canopy cleaning to comprehensive office maintenance, we deliver quality results with certified compliance and full insurance coverage.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="clean-unfold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="detail-reveal stagger-1"><a href="index.html">Home</a></li>
+                        <li class="detail-reveal stagger-2"><a href="services.html">Services</a></li>
+                        <li class="detail-reveal stagger-3"><a href="products.html">Products</a></li>
+                        <li class="detail-reveal stagger-4"><a href="gallery.html">Gallery</a></li>
+                        <li class="detail-reveal stagger-5"><a href="staff_provisioning.html">Staff Provision</a></li>
+                        <li class="detail-reveal stagger-6"><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="standard-check">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="maintenance-flow stagger-1"><i class="fas fa-phone me-2"></i><a href="tel:+61451374786">+61 451 374 786</a></li>
+                        <li class="maintenance-flow stagger-2"><i class="fas fa-envelope me-2"></i><a href="mailto:services@aussiecentrals.com.au">services@aussiecentrals.com.au</a></li>
+                        <li class="maintenance-flow stagger-3"><i class="fas fa-map-marker-alt me-2"></i>Kewdale WA 6105, Australia</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="tool-emerge">Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li class="service-sweep stagger-1">Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li class="service-sweep stagger-2">Saturday: 8:00 AM - 4:00 PM</li>
+                        <li class="service-sweep stagger-3">Sunday: By Appointment</li>
+                        <li class="clean-unfold stagger-4"><strong>Emergency Services Available 24/7</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0 1rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="detail-reveal">&copy; 2025 Aussie Centrals. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="standard-check stagger-1">Fully Insured & Compliant with Australian Standards</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Animation state
+        let animationsEnabled = true;
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // Enhanced Intersection Observer for services-specific animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (!animationsEnabled) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Special handling for service cards
+                    if (entry.target.classList.contains('service-card')) {
+                        setTimeout(() => {
+                            const icon = entry.target.querySelector('.service-icon');
+                            if (icon) {
+                                icon.style.transform = 'rotate(360deg) scale(1.1)';
+                                setTimeout(() => {
+                                    icon.style.transform = 'rotate(0deg) scale(1)';
+                                }, 600);
+                            }
+                        }, 400);
+                    }
+                    
+                    // Add cleaning wave effect for feature lists
+                    if (entry.target.classList.contains('feature-list')) {
+                        const items = entry.target.querySelectorAll('li');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.transform = 'translateX(10px)';
+                                item.style.background = 'rgba(39, 174, 96, 0.1)';
+                                setTimeout(() => {
+                                    item.style.transform = 'translateX(0)';
+                                    item.style.background = '';
+                                }, 300);
+                            }, index * 80);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.service-sweep, .tool-emerge, .clean-unfold, .detail-reveal, .standard-check, .maintenance-flow, .service-card, .feature-list').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced service card interactions
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                
+                // Service coordination effect
+                const allCards = document.querySelectorAll('.service-card');
+                allCards.forEach((otherCard, otherIndex) => {
+                    if (otherCard !== this) {
+                        otherCard.style.transform = 'scale(0.98)';
+                        otherCard.style.opacity = '0.7';
+                    }
+                });
+                
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+                this.style.zIndex = '10';
+                this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                
+                // Reset all cards
+                const allCards = document.querySelectorAll('.service-card');
+                allCards.forEach((otherCard) => {
+                    otherCard.style.transform = '';
+                    otherCard.style.opacity = '';
+                    otherCard.style.zIndex = '';
+                    otherCard.style.boxShadow = '';
+                });
+            });
+        });
+
+        // Standards section special interactions
+        document.querySelectorAll('.standard-item').forEach((item, index) => {
+            item.addEventListener('mouseenter', function() {
+                if (!animationsEnabled) return;
+                
+                this.style.transform = 'translateX(10px) scale(1.02)';
+                this.style.background = 'rgba(39, 174, 96, 0.15)';
+                this.style.borderRadius = '8px';
+                this.style.padding = '0.5rem';
+                this.style.marginLeft = '-0.5rem';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                if (!animationsEnabled) return;
+                
+                this.style.transform = '';
+                this.style.background = '';
+                this.style.borderRadius = '';
+                this.style.padding = '';
+                this.style.marginLeft = '';
+            });
+        });
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Toggle animations function
+        function toggleAnimations() {
+            animationsEnabled = !animationsEnabled;
+            const body = document.body;
+            const toggleText = document.getElementById('toggleText');
+            
+            if (!animationsEnabled) {
+                body.classList.add('animations-disabled');
+                toggleText.textContent = 'Enable Animations';
+            } else {
+                body.classList.remove('animations-disabled');
+                toggleText.textContent = 'Disable Animations';
+            }
+        }
+
+        // Scroll event handlers with performance optimization
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateNavbar();
+            
+            // Trigger initial animations for visible elements
+            setTimeout(() => {
+                document.querySelectorAll('.service-sweep, .tool-emerge, .clean-unfold, .detail-reveal, .standard-check, .maintenance-flow').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+
+        // Add service-themed easter egg
+        let serviceClickCount = 0;
+        document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+            if (e.detail === 6) { // 6 rapid clicks
+                serviceClickCount++;
+                if (serviceClickCount === 1) {
+                    // Add service mastery effect
+                    const serviceEffect = document.createElement('div');
+                    serviceEffect.innerHTML = '🧹 Service Master Mode Activated! 🧹';
+                    serviceEffect.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 10000;
+                        background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+                        color: white;
+                        padding: 25px;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+                        animation: serviceMaster 3s ease-in-out;
+                        border: 3px solid var(--primary-color);
+                    `;
+                    
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes serviceMaster {
+                            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotateX(-180deg); }
+                            25% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotateX(-90deg); }
+                            50% { transform: translate(-50%, -50%) scale(0.9) rotateX(0deg); }
+                            75% { transform: translate(-50%, -50%) scale(1.1) rotateX(90deg); }
+                            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) rotateX(180deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    document.body.appendChild(serviceEffect);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(serviceEffect);
+                        document.head.removeChild(style);
+                    }, 3000);
+                }
+            }
+        });
+
+        // Add service coordination particles
+        if (animationsEnabled && window.innerWidth > 768) {
+            function createServiceParticle() {
+                const particle = document.createElement('div');
+                const icons = ['🧽', '🧹', '🪣', '✨', '🧴'];
+                particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                particle.style.cssText = `
+                    position: fixed;
+                    font-size: 16px;
+                    pointer-events: none;
+                    z-index: 1;
+                    opacity: 0.6;
+                    animation: serviceFloat 12s linear infinite;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (document.body.contains(particle)) {
+                        document.body.removeChild(particle);
+                    }
+                }, 12000);
+            }
+
+            // Add service particle animation
+            const particleStyle = document.createElement('style');
+            particleStyle.textContent = `
+                @keyframes serviceFloat {
+                    0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+                    10% { opacity: 0.6; }
+                    50% { transform: translateY(50vh) rotate(180deg) scale(1.2); }
+                    90% { opacity: 0.6; }
+                    100% { transform: translateY(-100px) rotate(360deg) scale(0.8); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(particleStyle);
+
+            // Create particles periodically
+            setInterval(() => {
+                if (animationsEnabled && Math.random() > 0.88) {
+                    createServiceParticle();
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
